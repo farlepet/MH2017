@@ -18,7 +18,7 @@ var EditPlayerPage = (function () {
         })).append($("<label for='height'/>").text(" in.")).append($("<br/>")).append($("<label for='weight'/>").text("Weight: ")).append($("<input type='number' name='weight'/>", {
             min: 0,
             max: 500
-        })).append($("<label for='weight'/>").text(" lb.")));
+        })).append($("<label for='weight'/>").text(" lb.")).append($("<br/>")).append($("<button name='submit' value='update'/>").text("Update")));
         this.container.append($("<br/><br/>")).append($("<h3/>").text("Injury History:")).append($("<br/>"));
         this.injuries = $("<select>", {
             size: 5
@@ -27,7 +27,7 @@ var EditPlayerPage = (function () {
         this.container.append($("<form/>", {
             action: ".",
             method: 'GET'
-        }).append($("<label for='type'/>").text("Type of injury: ")).append($("<select name='type'/>")).append($("<br/>")).append($("<label for='date'/>").text("Date of injury: ")).append($("<input type='date' name='date'/>")));
+        }).append($("<label for='type'/>").text("Type of injury: ")).append($("<select name='type'/>")).append($("<br/>")).append($("<label for='date'/>").text("Date of injury: ")).append($("<input type='date' name='date'/>")).append($("<br/>")).append($("<button name='submit' value='add'/>").text("Add Injury")).append($("<button name='submit' value='update'/>").text("Update Injury")));
         return true;
     };
     EditPlayerPage.prototype.getName = function () {
@@ -39,10 +39,44 @@ var EditPlayerPage = (function () {
     };
     return EditPlayerPage;
 }());
+var EditTeamPage = (function () {
+    function EditTeamPage() {
+    }
+    EditTeamPage.prototype.init = function () {
+        this.container = $("#main-container");
+        this.container.append($("<form/>", {
+            action: ".",
+            method: "get"
+        }).append($("<label for='name'/>").text("Team Name: ")).append("<input type='text' name='name'/>"));
+        return true;
+    };
+    EditTeamPage.prototype.getName = function () {
+        return "Edit Team Information";
+    };
+    EditTeamPage.prototype.destroy = function () {
+        this.container.empty();
+        return true;
+    };
+    return EditTeamPage;
+}());
 var currentPage;
+var pageList = [
+    new EditTeamPage(),
+    new EditPlayerPage()
+];
 $(document).ready(function docReady() {
-    currentPage = new EditPlayerPage();
+    currentPage = pageList[0];
     document.title = "Safety Playbook - " + currentPage.getName() + " | MinneHack 2018";
     currentPage.init();
+    for (var i in pageList) {
+        $("#page-select").append($("<option/>", {
+            value: i.toString()
+        }).text(pageList[i].getName()));
+    }
+    $("#goto-page").on("click", function () {
+        currentPage.destroy();
+        currentPage = pageList[+$("#page-select").val()];
+        currentPage.init();
+    });
 });
 //# sourceMappingURL=main.js.map

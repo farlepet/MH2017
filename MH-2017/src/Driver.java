@@ -33,7 +33,7 @@ public class Driver
 
 		Injury pInjury;
 
-		mInjury = new Injury(2,1,2018, 0); // head injury
+		mInjury = new Injury(21,1,2018, 0); // head injury
 
 		rInjury = new Injury(2,1,2018, 1); // torso injury
 
@@ -48,7 +48,31 @@ public class Driver
 		tim.addInjury(tInjury);
 
 		pete.addInjury(pInjury);
-                
+
+		pete.setWeight(350);
+
+		tim.setWeight(170);
+
+		riley.setWeight(185);
+
+		mitchell.setWeight(100);
+
+		pete.setHeight(60);
+
+		tim.setHeight(70);
+
+		mitchell.setHeight(50);
+
+		riley.setHeight(63);
+
+		mitchell.setNumber(1);
+
+		pete.setNumber(2);
+
+		riley.setNumber(3);
+
+		tim.setNumber(4);
+
                 myTeam.addPlayer(mitchell);
                 myTeam.addPlayer(riley);
                 myTeam.addPlayer(tim);
@@ -61,7 +85,7 @@ public class Driver
                 
                 System.out.println(offense.getPlayer(tim.getNumber()));
 
-		System.out.println(tim.riskAgainst(riley));
+		System.out.println(pete.riskAgainst(riley));
 		//System.out.println(riley.riskFactorAgainst());
 
 		//System.out.println(tim.riskFactorAgainst());
