@@ -58,6 +58,8 @@ class EditPlayerPage implements Page {
                     max: 500
             })).append(
                 $("<label for='weight'/>").text(" lb.")
+            ).append($("<br/>")).append(
+                $("<button name='submit' value='update'/>").text("Update")
             )
         );
 
@@ -88,6 +90,10 @@ class EditPlayerPage implements Page {
                 $("<label for='date'/>").text("Date of injury: ")
             ).append(
                 $("<input type='date' name='date'/>")
+            ).append($("<br/>")).append(
+                $("<button name='submit' value='add'/>").text("Add Injury")
+            ).append(
+                $("<button name='submit' value='update'/>").text("Update Injury")
             )
         );
 
