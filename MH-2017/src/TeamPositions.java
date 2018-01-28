@@ -4,7 +4,7 @@
 public enum TeamPositions
 {
     //DEFENSE
-    CORNERBACK(false,null),
+    CORNERBACK(false,null), 
     LINEBACKER(false,null),
     DEFENSIVE_LINE(false,null),
     SAFETY(false,null),
