@@ -56,7 +56,26 @@ class SafetyPlaybookServer {
                 }
 
                 response += "]";
-            } else {
+            } else if(r.equals("getTeamPlayers")) {
+                if(!q.containsKey("t")) {
+                    return je("No team specified!");
+                }
+
+                int teamID = Integer.parseInt(q.get("t"));
+                Team team  = SafetyPlaybookDB.getInstance().getTeam(teamID);
+                if(team == null) return je("No such team!");
+                ArrayList<Player> players = team.getPlayerList();
+
+                response += "\"players\": [";
+                
+                for(Player p : players) {
+                    response += jst(""+p.getNumber(), p.getName()) + ",";
+                }
+
+                response += "]";
+            }
+            
+            else {
                 response += je("Unhandled request: " + r);
             }
 
