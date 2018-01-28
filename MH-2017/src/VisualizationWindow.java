@@ -45,11 +45,19 @@ public class VisualizationWindow extends javax.swing.JPanel {
         g.fillRect(0, 0, 460, 300);
         
         g.setColor(Color.white);
-        g.drawLine(0, 150, 460, 150);
         g.drawLine(230, 0, 230, 300);
 
+        // Yard Lines:
+        g.drawLine(0, 150, 460, 150);
         g.drawLine(0, 50, 460, 50);
         g.drawLine(0, 250, 460, 250);
+
+        // Hash Marks
+        g.drawLine(0, 100, 50, 100);
+        g.drawLine(0, 200, 50, 200);
+
+        g.drawLine(410, 100, 460, 100);
+        g.drawLine(410, 200, 460, 200);
 
         g.setColor(new Color(93, 21, 0));
         g.fillOval(230 - 4, 150 - 8, 8, 16);
