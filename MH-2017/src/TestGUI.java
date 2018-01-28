@@ -7,6 +7,8 @@
  */
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 
 import java.util.Deque;
@@ -36,6 +38,21 @@ public class TestGUI extends javax.swing.JFrame {
     public TestGUI() {
         this.setResizable(false);
         initComponents();
+        jPanel1.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                System.out.println(e.getX());
+                XPosField.setText(""+(e.getX()-230)/10);
+                System.out.println(e.getY());
+                YPosField.setText(""+(e.getY()-150)/10);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+        });
+
         DateField.setText("");
         AgeField.setText("");
         HeightField.setText("");
