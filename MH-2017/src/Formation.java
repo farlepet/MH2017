@@ -23,12 +23,12 @@ public abstract class Formation
     }
     
     //Adds a new player by taking in their role and their location
-    public void addPlayer(int number, Player player, TeamPositions teamPosition, Point2D.Double location)
+    public void addPlayer(Player player, TeamPositions teamPosition, Point2D.Double location)
     {
         if (!team.containsPlayer(player))
             throw new IllegalArgumentException(
                 "Player " +player.getName() + " not found in team.");
-        roster.put(number,(new PlayerEntry(number,player,teamPosition,location)));
+        roster.put(player.getNumber(),(new PlayerEntry(player,teamPosition,location)));
     }
     
     //Takes a number and returns the player associated with it
@@ -72,7 +72,7 @@ public abstract class Formation
         private TeamPositions teamPosition;
         private Point2D.Double location;
         
-        public PlayerEntry(int number, Player player, TeamPositions teamPosition, Point2D.Double location)
+        public PlayerEntry(Player player, TeamPositions teamPosition, Point2D.Double location)
         {
             if (location.x<-25.56 || location.x>26.65)
             {
@@ -83,7 +83,7 @@ public abstract class Formation
             this.player=player;
             this.teamPosition=teamPosition;
             this.location=location;
-            this.number=number;
+            this.number=player.getNumber();
             
         }
     }
