@@ -12,9 +12,12 @@ public abstract class Team
 {
     private ArrayList<PlayerEntry> roster;
     
-    
+    /*
+    This subclass contains references to a player and an integer.
+    */
     private class PlayerEntry
     {
-        
+        private Player player;
+        private TeamPositions position;
     }
 }
