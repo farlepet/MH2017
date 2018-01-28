@@ -33,7 +33,9 @@ public class TestGUI extends javax.swing.JFrame {
     Defense defenseTeam;
     
     public TestGUI() {
+        this.setResizable(false);
         initComponents();
+        DateField.setText("");
         AgeField.setText("");
         HeightField.setText("");
         WeightField.setText("");
@@ -98,6 +100,8 @@ public class TestGUI extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         DateField = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        visualizationWindow1 = new VisualizationWindow();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -197,6 +201,28 @@ public class TestGUI extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout visualizationWindow1Layout = new javax.swing.GroupLayout(visualizationWindow1);
+        visualizationWindow1.setLayout(visualizationWindow1Layout);
+        visualizationWindow1Layout.setHorizontalGroup(
+            visualizationWindow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 478, Short.MAX_VALUE)
+        );
+        visualizationWindow1Layout.setVerticalGroup(
+            visualizationWindow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 292, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(visualizationWindow1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(visualizationWindow1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -257,6 +283,10 @@ public class TestGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(DateField, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,7 +324,9 @@ public class TestGUI extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(YPosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AddPlayer))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addGap(27, 27, 27))
         );
@@ -354,12 +386,14 @@ public class TestGUI extends javax.swing.JFrame {
             team1.addPlayer(thisPlayer);
             offenseTeam.addPlayer(thisPlayer, TeamPositions.values()[jComboBox3.getSelectedIndex()] , 
                     (new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))));
+            visualizationWindow1.addOffensePoint((new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))));
         }
         else
         {
             team2.addPlayer(thisPlayer);
             defenseTeam.addPlayer(thisPlayer, TeamPositions.values()[jComboBox3.getSelectedIndex()] , 
                     (new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))));
+             visualizationWindow1.addDefensePoint((new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))));
         }
         AgeField.setText("");
         HeightField.setText("");
@@ -368,6 +402,7 @@ public class TestGUI extends javax.swing.JFrame {
         XPosField.setText("");
         YPosField.setText("");
         NumberField.setText("");
+        visualizationWindow1.repaint();
     }//GEN-LAST:event_AddPlayerActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -462,6 +497,8 @@ public class TestGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
+    private VisualizationWindow visualizationWindow1;
     // End of variables declaration//GEN-END:variables
 }
