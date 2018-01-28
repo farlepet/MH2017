@@ -4,7 +4,7 @@ namespace ajaxGet {
     export function teams(callback : (teams: TeamJSON[]) => any) {
         $.ajax({
             method: "GET",
-            url: "35.196.202.58:4040",
+            url: "http://localhost:4040",
             data: { r: "getTeams" },
             dataType: "json",
             success: function (data) {
@@ -15,6 +15,9 @@ namespace ajaxGet {
                     console.info("Teams fetched: " + data.teams);
                     callback(data.teams);
                 }
+            },
+            error: function (data : JQueryXHR, textStatus : string, errorThrown : string) {
+                console.info(data.statusText + data.status + " -> " +  textStatus + ": " + errorThrown + " < " + data.responseText);
             },
             cache: false
         });

@@ -4,7 +4,7 @@ namespace ajaxPut {
     export function team(name : string) {
         $.ajax({
             method: "GET",
-            url: "35.196.202.58:4040",
+            url: "http://localhost:4040",
             data: { r: "addTeam", n: name },
             dataType: "json",
             success: function (data) {
@@ -15,6 +15,9 @@ namespace ajaxPut {
                     console.info("Team added: " + data);
                     //callback(data.teams);
                 }
+            },
+            error: function (data : JQueryXHR, textStatus : string, errorThrown : string) {
+                console.info(data.statusText + data.status + " -> " +  textStatus + ": " + errorThrown + " < " + data.responseText);
             },
             cache: false
         });
