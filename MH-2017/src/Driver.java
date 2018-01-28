@@ -21,5 +21,11 @@ public class Driver
 
 		System.out.println (myInjury.daysSinceInjury());
 
+		Team myTeam;
+
+		myTeam= new Team();
+
+		myTeam.addPlayer(myPlayer);
+
 	}
 }
