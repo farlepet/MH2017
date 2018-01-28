@@ -126,7 +126,6 @@ public class Player
 
 	 		b = 0;
 	 	}
-	 	System.out.println("a = " + a + "  b = " + b);
 	 	retVal = ((double)a/(double)injury.daysSinceInjury())+(double)b;
 
 	 	return retVal;
