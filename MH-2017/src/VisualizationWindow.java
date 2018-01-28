@@ -45,7 +45,7 @@ public class VisualizationWindow extends javax.swing.JPanel {
         g.fillRect(0, 0, 460, 300);
         
         g.setColor(Color.white);
-        g.drawLine(230, 0, 230, 300);
+        //g.drawLine(230, 0, 230, 300);
 
         // Yard Lines:
         g.drawLine(0, 150, 460, 150);

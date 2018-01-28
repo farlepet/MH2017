@@ -18,6 +18,8 @@ import javax.swing.JComboBox;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import javax.swing.*;
+
 /**
  *
  * @author timca
@@ -401,6 +403,13 @@ public class TestGUI extends javax.swing.JFrame {
         
         if(offense)
         {
+            if (Double.parseDouble(YPosField.getText()) < 0)
+            {
+                JOptionPane.showMessageDialog(new JFrame(), "You cannot put a offenseman there!",
+                    "Illegal placement", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
             team1.addPlayer(thisPlayer);
             offenseTeam.addPlayer(thisPlayer, TeamPositions.values()[jComboBox3.getSelectedIndex()] , 
                     (new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))));
@@ -408,6 +417,13 @@ public class TestGUI extends javax.swing.JFrame {
         }
         else
         {
+            if (Double.parseDouble(YPosField.getText()) > 0)
+            {
+                JOptionPane.showMessageDialog(new JFrame(), "You cannot put a defenseman there!",
+                    "Illegal placement", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
             team2.addPlayer(thisPlayer);
             defenseTeam.addPlayer(thisPlayer, TeamPositions.values()[jComboBox3.getSelectedIndex()] , 
                     (new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))));
