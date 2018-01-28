@@ -453,13 +453,14 @@ public class TestGUI extends javax.swing.JFrame {
         RiskFactor[] riskArray2;
         
         riskArray2 = defenseTeam.getRiskLevels(offenseTeam);
-        addRiskArray(riskArray);
-        addRiskArray(riskArray2);
+
         for (int ii = 0; ii<riskArray2.length;ii++)
         {
-          	System.out.println("Name: " + riskArray2[ii].getPlayerEntry().getPlayer().getName() + " Risk Factor: " + riskArray[ii].getRiskScore());
+          	System.out.println("Name: " + riskArray2[ii].getPlayerEntry().getPlayer().getName() + " Risk Factor: " + riskArray2[ii].getRiskScore());
 
         }
+        addRiskArray(riskArray);
+        addRiskArray(riskArray2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void addRiskArray(RiskFactor[] array)
