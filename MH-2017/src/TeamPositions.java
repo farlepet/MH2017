@@ -4,16 +4,27 @@
 public enum TeamPositions
 {
     //DEFENSE
-    CORNERBACK,
-    LINEBACKER,
-    DEFENSIVE_LINE,
-    SAFETY,
+    CORNERBACK(false,null),
+    LINEBACKER(false,null),
+    DEFENSIVE_LINE(false,null),
+    SAFETY(false,null),
+    
     //OFFENSE
-    OFFENSIVE_LINE,
-    QUARTERBACK,
-    FULLBACK,
-    HALFBACK,
-    WIDE_RECIEVER,
-    TIGHT_END
+    OFFENSIVE_LINE(true, new TeamPositions[] {DEFENSIVE_LINE}),
+    QUARTERBACK(true, new TeamPositions[] {DEFENSIVE_LINE,LINEBACKER}),
+    RUNNINGBACK(true, new TeamPositions[] {LINEBACKER}),
+    WIDE_RECIEVER(true, new TeamPositions[] {CORNERBACK,SAFETY}),
+    TIGHT_END(true, new TeamPositions[] {LINEBACKER});
+    
+    private final boolean offense;
+    private final TeamPositions[] riskPositions;
+    
+    TeamPositions(boolean offense, TeamPositions[] riskPositions)
+    {
+        this.offense=offense;
+        this.riskPositions=riskPositions;
+    }
+    
+    
 }
 
