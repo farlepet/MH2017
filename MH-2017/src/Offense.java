@@ -40,7 +40,7 @@ public class Offense extends Formation
         //Increments through every entry in the offensive set
         for (Map.Entry<Integer,PlayerEntry> offensiveEntry : offenseSet)
         {
-            double thisDangerValue=offensiveEntry.getValue().getPlayer().riskAgainst();
+            double thisDangerValue=0.0;//offensiveEntry.getValue().getPlayer().riskAgainst();
             //Increments through every entry in the defensive set
             for (Map.Entry<Integer,PlayerEntry> defensiveEntry : defenseSet)
             {
