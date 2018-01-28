@@ -117,6 +117,13 @@ public class Driver
             	System.out.println("Name: " + riskArray[i].getPlayerEntry().getPlayer().getName() + " Risk Factor: " + riskArray[i].getRiskScore());
 
             }
+            riskArray = defense. getRiskLevels(offense);
+
+            for (int i = 0; i<riskArray.length;i++)
+            {
+            	System.out.println("Name: " + riskArray[i].getPlayerEntry().getPlayer().getName() + " Risk Factor: " + riskArray[i].getRiskScore());
+
+            }
 
 		//System.out.println(pete.riskAgainst(riley));
 		//System.out.println(riley.riskFactorAgainst());
