@@ -16,22 +16,21 @@ import java.util.ArrayList;
  */
 public class VisualizationWindow extends javax.swing.JPanel {
 
-    private ArrayList<Point2D.Double> defensePoints = new ArrayList<Point2D.Double>();
-    private ArrayList<Point2D.Double> offensePoints = new ArrayList<Point2D.Double>();
+    private ArrayList<PointWithColor> points = new ArrayList<PointWithColor>();
     
     
     public VisualizationWindow() {
         initComponents();
     }
     
-    public void addOffensePoint(Point2D.Double point)
+    public void addPoint(Point2D.Double point,Color color)
     {
-        offensePoints.add(point);
+       points.add(new PointWithColor(point,color));
     }
     
-    public void addDefensePoint(Point2D.Double point)
+    public void removeAllPoints()
     {
-        defensePoints.add(point);
+        points = new ArrayList<PointWithColor>();
     }
 
     @Override
@@ -42,14 +41,22 @@ public class VisualizationWindow extends javax.swing.JPanel {
         g.drawLine(0, 150, 460, 150);
         g.drawLine(230, 0, 230, 300);
         g.setColor(Color.blue);
-        for (Point2D.Double point : offensePoints)
+        for (PointWithColor point : points)
         {
-            g.drawOval((int)point.x*10+230, (int)point.y*10+150, 5, 5);
+            g.setColor(point.color);
+            g.fillOval((int)point.point.x*10+230-5, (int)point.point.y*10+150-5, 10, 10);
         }
-        g.setColor(Color.red);
-        for (Point2D.Double point : defensePoints)
+
+
+    }
+    private class PointWithColor
+    {
+        public Point2D.Double point;
+        public Color color;
+        public PointWithColor(Point2D.Double point, Color color)
         {
-            g.drawOval((int)point.x*10+230, (int)point.y*10+150, 5, 5);
+            this.color=color;
+            this.point=point;
         }
     }
     /**
