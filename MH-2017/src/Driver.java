@@ -5,9 +5,13 @@ public class Driver
 
 	public static void main(String[] args)
 	{
-		Team myTeam;
+		Team patriots;
 
-		myTeam= new Team("Jarvis Knights");
+		Team eagles;
+
+		patriots = new Team("Patriots");
+
+		eagles = new Team ("Eagles");
 
 		Player mitchell;
 
@@ -64,20 +68,64 @@ public class Driver
 		mitchell.setHeight(50);
 
 		riley.setHeight(63);
-                
-                myTeam.addPlayer(mitchell);
-                myTeam.addPlayer(riley);
-                myTeam.addPlayer(tim);
-                myTeam.addPlayer(pete);
 
-		Offense offense = new Offense(myTeam);
+		mitchell.setNumber(1);
+
+		pete.setNumber(2);
+
+		riley.setNumber(3);
+
+		tim.setNumber(4);
+
+		mitchell.setName("Mitchell");
+
+		riley.setName ("Riley");
+
+		pete.setName("Pete");
+
+		tim.setName("Tim");
+
+                eagles.addPlayer(mitchell);
+                eagles.addPlayer(riley);
+                eagles.addPlayer(tim);
+                eagles.addPlayer(pete);
+
+                patriots.addPlayer(mitchell);
+                patriots.addPlayer(riley);
+                patriots.addPlayer(tim);
+                patriots.addPlayer(pete);
+
+		Offense offense = new Offense(patriots);
                 offense.addPlayer(pete, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(0.0,3.0));
-                offense.addPlayer(tim, TeamPositions.QUARTERBACK, new Point2D.Double(0.0,0.0));
+                offense.addPlayer(tim, TeamPositions.WIDE_RECIEVER, new Point2D.Double(0.0,0.0));
                 offense.addPlayer(mitchell, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(6.0,3.0));
+
+        Defense defense = new Defense(eagles);
+                defense.addPlayer(riley, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(0.0,-3.0));
+                defense.addPlayer(tim, TeamPositions.CORNERBACK, new Point2D.Double(0.0,-0.1));
+                defense.addPlayer(mitchell, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(6.0,-3.0));
+                
                 
                 System.out.println(offense.getPlayer(tim.getNumber()));
 
-		System.out.println(mitchell.riskAgainst(riley));
+            RiskFactor[] riskArray;
+
+            riskArray = offense. getRiskLevels(defense);
+
+            for (int i = 0; i<riskArray.length;i++)
+            {
+            	System.out.println("Name: " + riskArray[i].getPlayerEntry().getPlayer().getName() + " Risk Factor: " + riskArray[i].getRiskScore());
+
+            }
+            riskArray = defense. getRiskLevels(offense);
+
+            for (int i = 0; i<riskArray.length;i++)
+            {
+            	System.out.println("Name: " + riskArray[i].getPlayerEntry().getPlayer().getName() + " Risk Factor: " + riskArray[i].getRiskScore());
+
+            }
+
+		//System.out.println(pete.riskAgainst(riley));
 		//System.out.println(riley.riskFactorAgainst());
 
 		//System.out.println(tim.riskFactorAgainst());

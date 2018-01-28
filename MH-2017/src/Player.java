@@ -26,6 +26,29 @@ public class Player
 	 	injuryHistory.add (injury);
 	 }
 
+	 public double riskAgainst()
+	 {
+	 	double riskFactor = 0;
+
+	 	double weightDifference;
+
+	 	double heightDifference;
+
+	 	for (int i =0; i <injuryHistory.size();i++)
+	 	{
+	 		currentInjury = injuryHistory.get(i);
+
+	 		riskFactor += injuryFormula(currentInjury);
+	 	}
+
+	 	if( riskFactor > 100)
+	 	{
+	 		riskFactor = 100;
+	 	}
+
+	 	return riskFactor;
+	 }
+
 	 public double riskAgainst(Player opponent)
 	 {
 	 	double riskFactor = 0;
@@ -103,7 +126,6 @@ public class Player
 
 	 		b = 0;
 	 	}
-	 	System.out.println("a = " + a + "  b = " + b);
 	 	retVal = ((double)a/(double)injury.daysSinceInjury())+(double)b;
 
 	 	return retVal;
