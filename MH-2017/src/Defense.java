@@ -55,7 +55,7 @@ public class Defense extends Formation
                     }
                 }
             }
-            output[i]=new RiskFactor(thisDangerValue,defensiveEntry.getValue());
+            output[i]=new RiskFactor(Math.round(thisDangerValue * 10.0)/10.0,defensiveEntry.getValue());
             i++;
         }
         return output;

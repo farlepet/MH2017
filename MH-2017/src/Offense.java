@@ -55,7 +55,7 @@ public class Offense extends Formation
                     }
                 }
             }
-            output[i]=new RiskFactor(thisDangerValue,offensiveEntry.getValue());
+            output[i]=new RiskFactor(Math.round(thisDangerValue*10.0)/10.0,offensiveEntry.getValue());
             i++;
         }
         return output;

@@ -186,8 +186,8 @@ public class Driver
 		leg2Injury = new Injury(4,1,2017, 3);
 		leg3Injury = new Injury(23,1,2018, 3);
 
-		a.setWeight(350);
-		b.setWeight(344);
+		a.setWeight(300);
+		b.setWeight(240);
 		c.setWeight(152);
 		d.setWeight(200);
 		e.setWeight(120);
@@ -198,11 +198,11 @@ public class Driver
 		j.setWeight(275);
 		k.setWeight(189);
 
-		a1.setWeight(105);
-		b1.setWeight(389);
+		a1.setWeight(185);
+		b1.setWeight(200);
 		c1.setWeight(167);
 		d1.setWeight(230);
-		e1.setWeight(300);
+		e1.setWeight(189);
 		f1.setWeight(225);
 		g1.setWeight(191);
 		h1.setWeight(150);
@@ -210,7 +210,7 @@ public class Driver
 		j1.setWeight(290);
 		k1.setWeight(132);
 
-		a.setHeight(45);
+		a.setHeight(53);
 		b.setHeight(63);
 		c.setHeight(50);
 		d.setHeight(58);
@@ -225,8 +225,8 @@ public class Driver
 		a1.setHeight(60);
 		b1.setHeight(69);
 		c1.setHeight(78);
-		d1.setHeight(40);
-		e1.setHeight(43);
+		d1.setHeight(49);
+		e1.setHeight(51);
 		f1.setHeight(66);
 		g1.setHeight(58);
 		h1.setHeight(80);
@@ -261,19 +261,19 @@ public class Driver
 		a.addInjury(head2Injury);
 		c.addInjury(arm1Injury);
 		d.addInjury(leg1Injury);
-		d.addInjury(head1Injury);
+		//d.addInjury(head1Injury);
 		g.addInjury(torso1Injury);
 		g.addInjury(torso3Injury);
 		i.addInjury(leg3Injury);
 
-		b1.addInjury(head3Injury);
+		//b1.addInjury(head3Injury);
 		c1.addInjury(arm1Injury);
 		c1.addInjury(leg2Injury);
 		e1.addInjury(torso1Injury);
-		g1.addInjury(head3Injury);
+		//g1.addInjury(head3Injury);
 		h1.addInjury(leg3Injury);
 		h1.addInjury(arm1Injury);
-		k1.addInjury(head1Injury);
+		//k1.addInjury(head1Injury);
 
 		Team tommies, gophers;
 
@@ -306,27 +306,27 @@ public class Driver
 
 		Offense tommieOffense = new Offense(tommies);
                 
-        tommieOffense.addPlayer(a, TeamPositions.QUARTERBACK, new Point2D.Double(0.5,1.5));
-        tommieOffense.addPlayer(b, TeamPositions.WIDE_RECIEVER, new Point2D.Double(15.0,0.5));
-        tommieOffense.addPlayer(c, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(3.0,0.5));
-        tommieOffense.addPlayer(d, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(1.5,0.5));
-        tommieOffense.addPlayer(e, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(0.0,0.5));
-        tommieOffense.addPlayer(f, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(-1.5,0.5));
-        tommieOffense.addPlayer(g, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(-3.0,0.5));
-        tommieOffense.addPlayer(h, TeamPositions.WIDE_RECIEVER, new Point2D.Double(-15.0,0.5));
-        tommieOffense.addPlayer(i, TeamPositions.TIGHT_END, new Point2D.Double(4.5,0.5));
-        tommieOffense.addPlayer(j, TeamPositions.RUNNINGBACK, new Point2D.Double(0.0,3.0));
-        tommieOffense.addPlayer(k, TeamPositions.RUNNINGBACK, new Point2D.Double(0.0,4.0));
+        tommieOffense.addPlayer(a, TeamPositions.QUARTERBACK, new Point2D.Double(0.5,2.0));
+        tommieOffense.addPlayer(b, TeamPositions.WIDE_RECIEVER, new Point2D.Double(15.0,1.0));
+        tommieOffense.addPlayer(c, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(3.0,1.0));
+        tommieOffense.addPlayer(d, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(1.5,1.0));
+        tommieOffense.addPlayer(e, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(0.0,1.0));
+        //tommieOffense.addPlayer(f, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(-1.5,1.0));
+        tommieOffense.addPlayer(g, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(-3.0,1.0));
+        //tommieOffense.addPlayer(h, TeamPositions.WIDE_RECIEVER, new Point2D.Double(-15.0,1.0));
+        tommieOffense.addPlayer(i, TeamPositions.TIGHT_END, new Point2D.Double(4.5,1.0));
+        tommieOffense.addPlayer(j, TeamPositions.RUNNINGBACK, new Point2D.Double(0.0,4.0));
+        tommieOffense.addPlayer(k, TeamPositions.RUNNINGBACK, new Point2D.Double(0.0,5.0));
 
     	Defense gopherDefense = new Defense(gophers);
 
-    	gopherDefense.addPlayer(a1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(-1.5,-0.5));
-    	gopherDefense.addPlayer(b1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(1.5,-0.5));
-    	gopherDefense.addPlayer(c1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(3.0,-0.5));
-    	gopherDefense.addPlayer(d1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(-3.0,-0.5));
-    	gopherDefense.addPlayer(e1, TeamPositions.LINEBACKER, new Point2D.Double(0.0,-3.0));
-    	gopherDefense.addPlayer(f1, TeamPositions.LINEBACKER, new Point2D.Double(2,-3.0));
-    	gopherDefense.addPlayer(g1, TeamPositions.LINEBACKER, new Point2D.Double(-2.0,-3.0));
+    	gopherDefense.addPlayer(a1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(-1.5,-1.0));
+    	gopherDefense.addPlayer(b1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(1.5,-1.0));
+    	gopherDefense.addPlayer(c1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(3.0,-1.0));
+    	gopherDefense.addPlayer(d1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(-3.0,-1.0));
+    	gopherDefense.addPlayer(e1, TeamPositions.LINEBACKER, new Point2D.Double(0.0,-3.5));
+    	gopherDefense.addPlayer(f1, TeamPositions.LINEBACKER, new Point2D.Double(2,-3.5));
+    	gopherDefense.addPlayer(g1, TeamPositions.LINEBACKER, new Point2D.Double(-2.0,-3.5));
     	gopherDefense.addPlayer(h1, TeamPositions.SAFETY, new Point2D.Double(7.5,-8.0));
     	gopherDefense.addPlayer(i1, TeamPositions.SAFETY, new Point2D.Double(-7.5,-8.0));
     	gopherDefense.addPlayer(j1, TeamPositions.CORNERBACK, new Point2D.Double(15.0,-1.5));
