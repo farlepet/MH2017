@@ -334,7 +334,7 @@ public class Driver
 
     	RiskFactor[] riskArray;
 
-    	riskArray = tommieOffense.getRiskLevels(tommieOffense);
+    	riskArray = tommieOffense.getRiskLevels(gopherDefense);
 
         for (int ii = 0; ii<riskArray.length;ii++)
         {
@@ -344,18 +344,12 @@ public class Driver
 
         RiskFactor[] riskArray2;
         
-        riskArray2 = gopherDefense.getRiskLevels(gopherDefense);
+        riskArray2 = gopherDefense.getRiskLevels(tommieOffense);
 
         for (int ii = 0; ii<riskArray2.length;ii++)
         {
           	System.out.println("Name: " + riskArray2[ii].getPlayerEntry().getPlayer().getNumber() + " Risk Factor: " + riskArray[ii].getRiskScore());
 
         }
-
-
-    	
-
-
-
-	}
+    }
 }

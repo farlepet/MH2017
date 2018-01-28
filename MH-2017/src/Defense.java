@@ -31,7 +31,7 @@ public class Defense extends Formation
         super.addPlayer(player, teamPosition, location);
     }
 
-    public RiskFactor[] getRiskLevels(Formation opposingTeam)
+    public RiskFactor[] getRiskLevels(Offense opposingTeam)
     {
         Set<Entry<Integer,PlayerEntry>> defenseSet = this.getHashMap().entrySet();
         Set<Entry<Integer,PlayerEntry>> offenseSet = opposingTeam.getHashMap().entrySet();
@@ -44,7 +44,7 @@ public class Defense extends Formation
             //Increments through every entry in the offensive set
             for (Map.Entry<Integer,PlayerEntry> offensiveEntry : offenseSet)
             {
-                for (TeamPositions position :offensiveEntry.getValue().getTeamPositions().getRiskPositions())
+                for (TeamPositions position : offensiveEntry.getValue().getTeamPositions().getRiskPositions())
                 {
                     //Checks if the offensive entry contains the current defensive entry in its teampositions list
                     if (position.equals(offensiveEntry.getValue().getTeamPositions()))
