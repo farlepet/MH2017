@@ -49,7 +49,7 @@ public class Player
 	 	return riskFactor;
 	 }
 
-	 private double weightFormula (  )
+	 //private double weightFormula (  )
 
 	 private double injuryFormula(Injury injury)
 	 {
