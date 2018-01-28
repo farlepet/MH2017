@@ -27,5 +27,6 @@ $(document).ready(function docReady() {
         currentPage.destroy();
         currentPage = pageList[+$("#page-select").val()];
         currentPage.init();
+        document.title = "Safety Playbook - " + currentPage.getName() + " | MinneHack 2018";
     });
 });

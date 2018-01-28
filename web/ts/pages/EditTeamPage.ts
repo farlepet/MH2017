@@ -8,6 +8,8 @@
 class EditTeamPage implements Page {
     
         container : JQuery;
+
+        playerSelect : JQuery;
     
         /**
          * Initializes the page. This function may phisically manipulate
@@ -23,6 +25,18 @@ class EditTeamPage implements Page {
                 }).append(
                     $("<label for='name'/>").text("Team Name: ")
                 ).append("<input type='text' name='name'/>")
+            ).append($("<br/>")).append(
+                $("<h3/>").text("Players:")
+            );
+
+            this.playerSelect = $("<select>", {
+                size: 10
+            });
+
+            this.container.append(this.playerSelect);
+
+            this.container.append($("<br/>")).append(
+                $("<button id='mod-player'/>").text("Modify Player")
             );
     
             return true;
