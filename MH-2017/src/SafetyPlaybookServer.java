@@ -8,8 +8,6 @@ import java.net.InetSocketAddress;
 class SafetyPlaybookServer {
     private HttpServer server;
 
-    private SafetyPlaybookDB db;
-
     private Map<String, String> queryToMap(String query){
         Map<String, String> result = new HashMap<String, String>();
         for (String param : query.split("&")) {
@@ -24,6 +22,7 @@ class SafetyPlaybookServer {
     }
 
     private class requestHandler implements HttpHandler {
+        
         public void handle(HttpExchange exchange) throws IOException {
             String query = exchange.getRequestURI().getQuery();
             Map<String, String> q = queryToMap(query);
@@ -48,8 +47,15 @@ class SafetyPlaybookServer {
             String response = "";
             String r = q.get("r");
 
-            if(r.equals("getTeam")) {
-                response += je("NYI");
+            if(r.equals("getTeams")) {
+                response += "\"teams\": [";
+
+                Map<Integer, String> teams = SafetyPlaybookDB.getInstance().getTeams();
+                for(Map.Entry<Integer, String> entry : teams.entrySet()) {
+                    response += jst(entry.getKey().toString(), entry.getValue()) + ",";
+                }
+
+                response += "]";
             } else {
                 response += je("Unhandled request: " + r);
             }
@@ -71,9 +77,7 @@ class SafetyPlaybookServer {
      * 
      * @param port Port number to use
      */
-    public SafetyPlaybookServer(int port, SafetyPlaybookDB db) throws IOException {
-        this.db = db;
-        
+    public SafetyPlaybookServer(int port) throws IOException {
         this.server = HttpServer.create(new InetSocketAddress(port), 0);
 
         this.server.createContext("/", new requestHandler());
