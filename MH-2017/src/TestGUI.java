@@ -45,9 +45,9 @@ public class TestGUI extends javax.swing.JFrame {
             @Override
             public void mousePressed(MouseEvent e) {
                 System.out.println(e.getX());
-                XPosField.setText(""+(e.getX()-230)/10);
+                XPosField.setText(""+(e.getX()-230)/10.0);
                 System.out.println(e.getY());
-                YPosField.setText(""+(e.getY()-150)/10);
+                YPosField.setText(""+(e.getY()-150)/10.0);
             }
 
             @Override
@@ -453,13 +453,14 @@ public class TestGUI extends javax.swing.JFrame {
         RiskFactor[] riskArray2;
         
         riskArray2 = defenseTeam.getRiskLevels(offenseTeam);
-        addRiskArray(riskArray);
-        addRiskArray(riskArray2);
+
         for (int ii = 0; ii<riskArray2.length;ii++)
         {
-          	System.out.println("Name: " + riskArray2[ii].getPlayerEntry().getPlayer().getName() + " Risk Factor: " + riskArray[ii].getRiskScore());
+          	System.out.println("Name: " + riskArray2[ii].getPlayerEntry().getPlayer().getName() + " Risk Factor: " + riskArray2[ii].getRiskScore());
 
         }
+        addRiskArray(riskArray);
+        addRiskArray(riskArray2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void addRiskArray(RiskFactor[] array)
