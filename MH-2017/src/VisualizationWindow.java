@@ -1,6 +1,8 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 public class VisualizationWindow extends javax.swing.JPanel {
 
     private ArrayList<PointWithColor> points = new ArrayList<PointWithColor>();
+    
     
     
     public VisualizationWindow() {
