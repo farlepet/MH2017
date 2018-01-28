@@ -22,8 +22,9 @@ public class Offense extends Formation
     {
         if (location.y<0)
             {
-                throw new IllegalArgumentException(
-                "Player "+player.getName()+" has an invalid Y position.");
+                JOptionPane.showMessageDialog(new JFrame(), "You cannot put a offenseman there!",
+                    "Illegal placement", JOptionPane.WARNING_MESSAGE);
+                return;
             }
         if (!teamPosition.getOffense())
                 throw new IllegalArgumentException(
