@@ -362,8 +362,8 @@ public class TestGUI extends javax.swing.JFrame {
         String[] date = DateField.getText().split("/");
         DateField.setText("");
         injuryStack.add(new Injury(
-                Integer.parseInt(date[0]),
                 Integer.parseInt(date[1]),
+                Integer.parseInt(date[0]),
                 Integer.parseInt(date[2]),jComboBox2.getSelectedIndex()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
