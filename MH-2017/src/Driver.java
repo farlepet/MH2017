@@ -320,17 +320,17 @@ public class Driver
 
     	Defense gopherDefense = new Defense(gophers);
 
-    	gopherDefense.addPlayer(a1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(0.0,-0.5));
-    	gopherDefense.addPlayer(a1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(1.5,-0.5));
-    	gopherDefense.addPlayer(a1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(3.0,-0.5));
-    	gopherDefense.addPlayer(a1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(-3.0,-0.5));
-    	gopherDefense.addPlayer(a1, TeamPositions.LINEBACKER, new Point2D.Double(0.0,-3.0));
-    	gopherDefense.addPlayer(a1, TeamPositions.LINEBACKER, new Point2D.Double(2,-3.0));
-    	gopherDefense.addPlayer(a1, TeamPositions.LINEBACKER, new Point2D.Double(-2.0,-3.0));
-    	gopherDefense.addPlayer(a1, TeamPositions.SAFETY, new Point2D.Double(-7.5,-8.0));
-    	gopherDefense.addPlayer(a1, TeamPositions.SAFETY, new Point2D.Double(-7.5,-8.0));
-    	gopherDefense.addPlayer(a1, TeamPositions.CORNERBACK, new Point2D.Double(15.0,-1.5));
-    	gopherDefense.addPlayer(a1, TeamPositions.CORNERBACK, new Point2D.Double(-15.0,-1.5));
+    	gopherDefense.addPlayer(a1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(-1.5,-0.5));
+    	gopherDefense.addPlayer(b1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(1.5,-0.5));
+    	gopherDefense.addPlayer(c1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(3.0,-0.5));
+    	gopherDefense.addPlayer(d1, TeamPositions.DEFENSIVE_LINE, new Point2D.Double(-3.0,-0.5));
+    	gopherDefense.addPlayer(e1, TeamPositions.LINEBACKER, new Point2D.Double(0.0,-3.0));
+    	gopherDefense.addPlayer(f1, TeamPositions.LINEBACKER, new Point2D.Double(2,-3.0));
+    	gopherDefense.addPlayer(g1, TeamPositions.LINEBACKER, new Point2D.Double(-2.0,-3.0));
+    	gopherDefense.addPlayer(h1, TeamPositions.SAFETY, new Point2D.Double(7.5,-8.0));
+    	gopherDefense.addPlayer(i1, TeamPositions.SAFETY, new Point2D.Double(-7.5,-8.0));
+    	gopherDefense.addPlayer(j1, TeamPositions.CORNERBACK, new Point2D.Double(15.0,-1.5));
+    	gopherDefense.addPlayer(k1, TeamPositions.CORNERBACK, new Point2D.Double(-15.0,-1.5));
 
     	RiskFactor[] riskArray;
 
@@ -338,7 +338,7 @@ public class Driver
 
         for (int ii = 0; ii<riskArray.length;ii++)
         {
-           	System.out.println("Name: " + riskArray[ii].getPlayerEntry().getPlayer().getNumber() + " Risk Factor: " + riskArray[ii].getRiskScore());
+           	System.out.println("Offensive Names: " + riskArray[ii].getPlayerEntry().getPlayer().getNumber() + " Risk Factor: " + riskArray[ii].getRiskScore());
 
         }
 
@@ -348,8 +348,12 @@ public class Driver
 
         for (int ii = 0; ii<riskArray2.length;ii++)
         {
-          	System.out.println("Name: " + riskArray2[ii].getPlayerEntry().getPlayer().getNumber() + " Risk Factor: " + riskArray[ii].getRiskScore());
+          	System.out.println("Defensive Names: " + riskArray2[ii].getPlayerEntry().getPlayer().getNumber() + " Risk Factor: " + riskArray2[ii].getRiskScore());
 
         }
+
+
+
+
     }
 }
