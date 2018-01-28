@@ -355,6 +355,8 @@ public class Driver
 
         TestGUI testGUI = new TestGUI();
         testGUI.show();
+        testGUI.defenseTeam=gopherDefense;
+        testGUI.offenseTeam=tommieOffense;
         testGUI.addRiskArray(riskArray);
         testGUI.addRiskArray(riskArray2);
 
