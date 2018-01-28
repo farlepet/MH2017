@@ -1,3 +1,4 @@
+import java.awt.geom.Point2D;
 import java.util.*;
 public class Driver
 {
@@ -47,8 +48,18 @@ public class Driver
 		tim.addInjury(tInjury);
 
 		pete.addInjury(pInjury);
+                
+                myTeam.addPlayer(mitchell);
+                myTeam.addPlayer(riley);
+                myTeam.addPlayer(tim);
+                myTeam.addPlayer(pete);
 
-		
+		Offense offense = new Offense(myTeam);
+                offense.addPlayer(pete, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(0.0,3.0));
+                offense.addPlayer(tim, TeamPositions.QUARTERBACK, new Point2D.Double(0.0,0.0));
+                offense.addPlayer(mitchell, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(6.0,3.0));
+                
+                System.out.println(offense.getPlayer(tim.getNumber()));
 
 		System.out.println(tim.riskAgainst(riley));
 		//System.out.println(riley.riskFactorAgainst());
