@@ -9,6 +9,9 @@
 
 import java.awt.geom.Point2D;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.Vector;
 
 public abstract class Formation
@@ -55,5 +58,38 @@ public abstract class Formation
         return roster.remove(number);
     }
     
-    abstract public RiskFactor[] getRiskLevels(Team opposingTeam);
+    //Returns the HashMap
+    public HashMap<Integer,PlayerEntry> getHashMap()
+    {
+        return roster;
+    }
+    
+    //Returns an array with all player entries associated with a risk value.
+    abstract public RiskFactor[] getRiskLevels(Formation opposingTeam);
+    
+    public     RiskFactor[] getRiskFactor(Set<Entry<Integer, PlayerEntry>> offenseSet, Set<Entry<Integer, PlayerEntry>> defenseSet)
+    {
+        RiskFactor[] output = new RiskFactor[offenseSet.size()];
+        
+        int i=0;
+        for (Map.Entry<Integer,PlayerEntry> ourEntry : offenseSet)
+        {
+            int thisDangerValue = 0;
+            for (Map.Entry<Integer,PlayerEntry> theirEntry : defenseSet)
+            {
+                for (TeamPositions position :ourEntry.getValue().getTeamPositions().getRiskPositions())
+                {
+                    if (position.equals(theirEntry.getValue().getTeamPositions()))
+                    {
+                        thisDangerValue+=ourEntry.getValue().getPlayer().riskAgainst(theirEntry.getValue().getPlayer());
+                    }
+                }
+            }
+            output[i]=new RiskFactor(thisDangerValue,ourEntry.getValue());
+            i++;
+        }
+        return output;
+    }
+
+    
 }

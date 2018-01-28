@@ -1,5 +1,7 @@
 
 import java.awt.geom.Point2D;
+import java.util.Map;
+import java.util.Set;
 
 /*
     This class defines a defensive formation.
@@ -28,8 +30,10 @@ public class Defense extends Formation
         super.addPlayer(player, teamPosition, location);
     }
 
-    public RiskFactor[] getRiskLevels(Team opposingTeam)
+    public RiskFactor[] getRiskLevels(Formation opposingTeam)
     {
-        return null;
+        Set<Map.Entry<Integer,PlayerEntry>> defenseSet = this.getHashMap().entrySet();
+        Set<Map.Entry<Integer,PlayerEntry>> offenseSet = opposingTeam.getHashMap().entrySet();
+        return super.getRiskFactor(offenseSet,defenseSet);
     }
 }

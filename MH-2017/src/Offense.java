@@ -1,5 +1,8 @@
 
 import java.awt.geom.Point2D;
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /*
     This class defines an offensive formation
@@ -27,8 +30,10 @@ public class Offense extends Formation
         super.addPlayer(player, teamPosition, location);
     }
     
-    public RiskFactor[] getRiskLevels(Team opposingTeam)
+    public RiskFactor[] getRiskLevels(Formation opposingTeam)
     {
-        return null;
+        Set<Entry<Integer,PlayerEntry>> offenseSet = this.getHashMap().entrySet();
+        Set<Entry<Integer,PlayerEntry>> defenseSet = opposingTeam.getHashMap().entrySet();
+        return super.getRiskFactor(offenseSet,defenseSet);
     }
 }
