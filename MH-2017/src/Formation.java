@@ -54,4 +54,6 @@ public abstract class Formation
     {
         return roster.remove(number);
     }
+    
+    abstract public RiskFactor[] getRiskLevels(Team opposingTeam);
 }

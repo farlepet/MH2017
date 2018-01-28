@@ -23,12 +23,12 @@ public class Offense extends Formation
             }
         if (!teamPosition.getOffense())
                 throw new IllegalArgumentException(
-                    "Cannot add defensive player to defensive formation");
+                    "Cannot add defensive player to offensive formation");
         super.addPlayer(player, teamPosition, location);
     }
     
-    public void getRiskLevels(Team opposingTeam)
+    public RiskFactor[] getRiskLevels(Team opposingTeam)
     {
-        
+        return null;
     }
 }
