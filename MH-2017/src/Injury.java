@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /*
 	This class represents injuries that players have. 
@@ -18,6 +19,7 @@ public class Injury
 
 	public Injury(int day, int month, int year, int type)
 	{
+		date = Calendar.getInstance();
 		date.set(Calendar.DAY_OF_MONTH,day);
 		date.set(Calendar.MONTH,month);
 		date.set(Calendar.YEAR,year);
@@ -28,6 +30,30 @@ public class Injury
 	public Calendar getDate()
 	{
 		return date;
+	}
+
+	public long daysSinceInjury()
+	{
+
+		long numDays;
+
+		Calendar today;
+
+		today = Calendar.getInstance();
+
+		long dateOfInjury;
+
+		dateOfInjury = this.date.getTimeInMillis();
+
+		long now = today.getTimeInMillis();
+
+		long diff = now - dateOfInjury;
+
+		long diffDays = diff / (24 * 60 * 60 * 1000) + 30;
+
+		numDays = TimeUnit.MILLISECONDS.toDays (Math.abs(dateOfInjury-now));
+
+		return diffDays;
 	}
 
 	public int getType()
