@@ -36,4 +36,24 @@ public class Team
     {
         return roster.contains(checkPlayer);
     }
+
+    public Player getPlayer(int number)
+    {
+        Player currentPlayer;
+
+        for (int i = 0; i < roster.size(); i ++)
+        {   
+            currentPlayer = roster.get(i);
+            if (currentPlayer.getNumber() == number)
+            {
+                return currentPlayer;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Player> getPlayerList()
+    {
+        return roster;
+    }
 }
