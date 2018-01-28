@@ -56,4 +56,6 @@ public class Team
     {
         return roster;
     }
+
+    public String getName() { return this.teamName; }
 }

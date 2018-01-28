@@ -50,9 +50,9 @@ class SafetyPlaybookServer {
             if(r.equals("getTeams")) {
                 response += "\"teams\": [";
 
-                Map<Integer, String> teams = SafetyPlaybookDB.getInstance().getTeams();
-                for(Map.Entry<Integer, String> entry : teams.entrySet()) {
-                    response += jst(entry.getKey().toString(), entry.getValue()) + ",";
+                Map<Integer, Team> teams = SafetyPlaybookDB.getInstance().getTeams();
+                for(Map.Entry<Integer, Team> entry : teams.entrySet()) {
+                    response += jst(entry.getKey().toString(), entry.getValue().getName()) + ",";
                 }
 
                 response += "]";
