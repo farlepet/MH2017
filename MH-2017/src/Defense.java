@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javax.swing.*;
+
 /*
     This class defines a defensive formation.
  */
@@ -22,8 +24,9 @@ public class Defense extends Formation
     {
         if (location.y>0)
             {
-                throw new IllegalArgumentException(
-                "Player "+player.getName()+" has an invalid Y position.");
+                JOptionPane.showMessageDialog(new JFrame(), "You cannot put a defenseman there!",
+                    "Illegal placement", JOptionPane.WARNING_MESSAGE);
+                return;
             }
         if (teamPosition.getOffense())
                 throw new IllegalArgumentException(
