@@ -311,9 +311,9 @@ public class Driver
         tommieOffense.addPlayer(c, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(3.0,1.0));
         tommieOffense.addPlayer(d, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(1.5,1.0));
         tommieOffense.addPlayer(e, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(0.0,1.0));
-        //tommieOffense.addPlayer(f, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(-1.5,1.0));
+        tommieOffense.addPlayer(f, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(-1.5,1.0));
         tommieOffense.addPlayer(g, TeamPositions.OFFENSIVE_LINE, new Point2D.Double(-3.0,1.0));
-        //tommieOffense.addPlayer(h, TeamPositions.WIDE_RECIEVER, new Point2D.Double(-15.0,1.0));
+        tommieOffense.addPlayer(h, TeamPositions.WIDE_RECIEVER, new Point2D.Double(-15.0,1.0));
         tommieOffense.addPlayer(i, TeamPositions.TIGHT_END, new Point2D.Double(4.5,1.0));
         tommieOffense.addPlayer(j, TeamPositions.RUNNINGBACK, new Point2D.Double(0.0,4.0));
         tommieOffense.addPlayer(k, TeamPositions.RUNNINGBACK, new Point2D.Double(0.0,5.0));
@@ -327,7 +327,7 @@ public class Driver
     	gopherDefense.addPlayer(e1, TeamPositions.LINEBACKER, new Point2D.Double(0.0,-3.5));
     	gopherDefense.addPlayer(f1, TeamPositions.LINEBACKER, new Point2D.Double(2,-3.5));
     	gopherDefense.addPlayer(g1, TeamPositions.LINEBACKER, new Point2D.Double(-2.0,-3.5));
-    	//gopherDefense.addPlayer(h1, TeamPositions.SAFETY, new Point2D.Double(7.5,-8.0));
+    	gopherDefense.addPlayer(h1, TeamPositions.SAFETY, new Point2D.Double(7.5,-8.0));
     	gopherDefense.addPlayer(i1, TeamPositions.SAFETY, new Point2D.Double(-7.5,-8.0));
     	gopherDefense.addPlayer(j1, TeamPositions.CORNERBACK, new Point2D.Double(15.0,-1.5));
     	gopherDefense.addPlayer(k1, TeamPositions.CORNERBACK, new Point2D.Double(-15.0,-1.5));
