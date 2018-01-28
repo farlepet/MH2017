@@ -7,7 +7,7 @@ public class Driver
 
 		Injury myInjury;
 
-		myInjury = new Injury(2,1,2018, 2);
+		myInjury = new Injury(31,12,2017, 2);
 
 		Player myPlayer;
 
@@ -18,6 +18,8 @@ public class Driver
 		myPlayer.setHeight (213);
 
 		myPlayer.addInjury(myInjury);
+
+		System.out.println (myInjury.daysSinceInjury());
 
 	}
 }
