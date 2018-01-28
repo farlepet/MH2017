@@ -44,10 +44,17 @@ var EditTeamPage = (function () {
     }
     EditTeamPage.prototype.init = function () {
         this.container = $("#main-container");
+        this.teamSelect = $("<select/>");
+        this.container.append(this.teamSelect).append($("<button id='sel-team'/>").text("Pick Team"));
         this.container.append($("<form/>", {
             action: ".",
             method: "get"
-        }).append($("<label for='name'/>").text("Team Name: ")).append("<input type='text' name='name'/>"));
+        }).append($("<label for='name'/>").text("Team Name: ")).append("<input type='text' name='name'/>")).append($("<br/>")).append($("<h3/>").text("Players:"));
+        this.playerSelect = $("<select/>", {
+            size: 10
+        });
+        this.container.append(this.playerSelect);
+        this.container.append($("<br/>")).append($("<button id='mod-player'/>").text("Modify Player"));
         return true;
     };
     EditTeamPage.prototype.getName = function () {
@@ -59,10 +66,36 @@ var EditTeamPage = (function () {
     };
     return EditTeamPage;
 }());
+var FormationPage = (function () {
+    function FormationPage() {
+    }
+    FormationPage.prototype.init = function () {
+        this.container = $("#main-container");
+        this.leftContainer = $("<div/>", { class: "leftContainer" });
+        this.rightContainer = $("<div/>", { class: "rightContainer" });
+        this.container.append(this.leftContainer).append(this.rightContainer);
+        this.formationList = $("<select/>", {
+            size: 6
+        });
+        this.leftContainer.append(this.formationList);
+        this.leftContainer.append($("<br/>"));
+        this.leftContainer.append($("<button/>").text("Update Formation")).append($("<button/>").text("Add Formation"));
+        return true;
+    };
+    FormationPage.prototype.getName = function () {
+        return "Edit Formations";
+    };
+    FormationPage.prototype.destroy = function () {
+        this.container.empty();
+        return true;
+    };
+    return FormationPage;
+}());
 var currentPage;
 var pageList = [
     new EditTeamPage(),
-    new EditPlayerPage()
+    new EditPlayerPage(),
+    new FormationPage()
 ];
 $(document).ready(function docReady() {
     currentPage = pageList[0];
@@ -77,6 +110,7 @@ $(document).ready(function docReady() {
         currentPage.destroy();
         currentPage = pageList[+$("#page-select").val()];
         currentPage.init();
+        document.title = "Safety Playbook - " + currentPage.getName() + " | MinneHack 2018";
     });
 });
 //# sourceMappingURL=main.js.map
