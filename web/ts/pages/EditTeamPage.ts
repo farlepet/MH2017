@@ -45,6 +45,8 @@ class EditTeamPage implements Page {
             this.container.append($("<br/>")).append(
                 $("<button id='mod-player'/>").text("Modify Player")
             );
+
+            ajaxGet.teams((teams) => this.displayTeams(teams));
     
             return true;
         }
@@ -63,6 +65,22 @@ class EditTeamPage implements Page {
             this.container.empty();
     
             return true;
+        }
+
+        displayTeams(teams : TeamJSON[]) {
+            this.teamSelect.empty();
+
+            console.log(teams);
+
+            for(let i in teams) {
+                this.teamSelect.append(
+                    $("<option/>", {
+                        value: teams[i].id
+                    }).text(teams[i].name)
+                );
+
+                console.log(teams[i]);
+            }
         }
     }
     

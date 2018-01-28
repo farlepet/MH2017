@@ -1,6 +1,9 @@
 /// <reference path="pages/EditPlayerPage.ts"/>
-/// <reference path="pages/EditTeamPage.ts"/>
 /// <reference path="pages/FormationPage.ts"/>
+/// <reference path="pages/EditTeamPage.ts"/>
+
+/// <reference path="ajax/ajaxGet.ts"/>
+/// <reference path="ajax/ajaxPut.ts"/>
 
 var currentPage : Page;
 

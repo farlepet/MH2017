@@ -39,33 +39,6 @@ var EditPlayerPage = (function () {
     };
     return EditPlayerPage;
 }());
-var EditTeamPage = (function () {
-    function EditTeamPage() {
-    }
-    EditTeamPage.prototype.init = function () {
-        this.container = $("#main-container");
-        this.teamSelect = $("<select/>");
-        this.container.append(this.teamSelect).append($("<button id='sel-team'/>").text("Pick Team"));
-        this.container.append($("<form/>", {
-            action: ".",
-            method: "get"
-        }).append($("<label for='name'/>").text("Team Name: ")).append("<input type='text' name='name'/>")).append($("<br/>")).append($("<h3/>").text("Players:"));
-        this.playerSelect = $("<select/>", {
-            size: 10
-        });
-        this.container.append(this.playerSelect);
-        this.container.append($("<br/>")).append($("<button id='mod-player'/>").text("Modify Player"));
-        return true;
-    };
-    EditTeamPage.prototype.getName = function () {
-        return "Edit Team Information";
-    };
-    EditTeamPage.prototype.destroy = function () {
-        this.container.empty();
-        return true;
-    };
-    return EditTeamPage;
-}());
 var FormationPage = (function () {
     function FormationPage() {
     }
@@ -91,6 +64,96 @@ var FormationPage = (function () {
     };
     return FormationPage;
 }());
+var EditTeamPage = (function () {
+    function EditTeamPage() {
+    }
+    EditTeamPage.prototype.init = function () {
+        var _this = this;
+        this.container = $("#main-container");
+        this.teamSelect = $("<select/>");
+        this.container.append(this.teamSelect).append($("<button id='sel-team'/>").text("Pick Team"));
+        this.container.append($("<form/>", {
+            action: ".",
+            method: "get"
+        }).append($("<label for='name'/>").text("Team Name: ")).append("<input type='text' name='name'/>")).append($("<br/>")).append($("<h3/>").text("Players:"));
+        this.playerSelect = $("<select/>", {
+            size: 10
+        });
+        this.container.append(this.playerSelect);
+        this.container.append($("<br/>")).append($("<button id='mod-player'/>").text("Modify Player"));
+        ajaxGet.teams(function (teams) { return _this.displayTeams(teams); });
+        return true;
+    };
+    EditTeamPage.prototype.getName = function () {
+        return "Edit Team Information";
+    };
+    EditTeamPage.prototype.destroy = function () {
+        this.container.empty();
+        return true;
+    };
+    EditTeamPage.prototype.displayTeams = function (teams) {
+        this.teamSelect.empty();
+        console.log(teams);
+        for (var i in teams) {
+            this.teamSelect.append($("<option/>", {
+                value: teams[i].id
+            }).text(teams[i].name));
+            console.log(teams[i]);
+        }
+    };
+    return EditTeamPage;
+}());
+var ajaxGet;
+(function (ajaxGet) {
+    function teams(callback) {
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:4040",
+            data: { r: "getTeams" },
+            dataType: "json",
+            success: function (data) {
+                if ("error" in data) {
+                    console.log(data);
+                    alert("Error fetching teams: " + data.error);
+                }
+                else {
+                    console.info("Teams fetched: " + data.teams);
+                    callback(data.teams);
+                }
+            },
+            error: function (data, textStatus, errorThrown) {
+                console.info(data.statusText + data.status + " -> " + textStatus + ": " + errorThrown + " < " + data.responseText);
+            },
+            cache: false
+        });
+    }
+    ajaxGet.teams = teams;
+})(ajaxGet || (ajaxGet = {}));
+var ajaxPut;
+(function (ajaxPut) {
+    function team(name) {
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:4040",
+            data: { r: "addTeam", n: name },
+            dataType: "json",
+            success: function (data) {
+                if ("error" in data) {
+                    console.log(data);
+                    alert("Error adding team: " + data.error);
+                }
+                else {
+                    console.info("Team added: " + data);
+                }
+            },
+            error: function (data, textStatus, errorThrown) {
+                console.info(data.statusText + data.status + " -> " + textStatus + ": " + errorThrown + " < " + data.responseText);
+            },
+            cache: false
+        });
+    }
+    ajaxPut.team = team;
+})(ajaxPut || (ajaxPut = {}));
 var currentPage;
 var pageList = [
     new EditTeamPage(),
@@ -113,4 +176,20 @@ $(document).ready(function docReady() {
         document.title = "Safety Playbook - " + currentPage.getName() + " | MinneHack 2018";
     });
 });
+var MainPage = (function () {
+    function MainPage() {
+    }
+    MainPage.prototype.init = function () {
+        this.container = $("#main-container");
+        return true;
+    };
+    MainPage.prototype.getName = function () {
+        return "Main Page";
+    };
+    MainPage.prototype.destroy = function () {
+        this.container.empty();
+        return true;
+    };
+    return MainPage;
+}());
 //# sourceMappingURL=main.js.map

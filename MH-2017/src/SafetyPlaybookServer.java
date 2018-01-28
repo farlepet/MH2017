@@ -24,6 +24,16 @@ class SafetyPlaybookServer {
     private class requestHandler implements HttpHandler {
         
         public void handle(HttpExchange exchange) throws IOException {
+            exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+            exchange.getResponseHeaders().add("Content-Type", "text/json"); 
+            
+            if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
+                exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, OPTIONS");
+                exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
+                exchange.sendResponseHeaders(204, -1);
+                return;
+            }
+
             String query = exchange.getRequestURI().getQuery();
             Map<String, String> q = queryToMap(query);
 
@@ -52,8 +62,10 @@ class SafetyPlaybookServer {
 
                 Map<Integer, Team> teams = SafetyPlaybookDB.getInstance().getTeams();
                 for(Map.Entry<Integer, Team> entry : teams.entrySet()) {
-                    response += jst(entry.getKey().toString(), entry.getValue().getName()) + ",";
+                    response += "{" + jst("id", entry.getKey().toString()) + ", " + jst("name", entry.getValue().getName()) + "},";
                 }
+
+                response = response.substring(0, response.length() - 1);
 
                 response += "]";
             } else if(r.equals("getTeamPlayers")) {
