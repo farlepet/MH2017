@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd scss
+
+SCSS_FILES=`find ./ -name "*.scss" ! -name "_*"`
+
+for i in $SCSS_FILES
+do
+	echo "${i} -> ../css/${i%.*}.css"
+	sassc $i > ../css/${i%.*}.css
+done

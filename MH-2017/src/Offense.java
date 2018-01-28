@@ -50,7 +50,7 @@ public class Offense extends Formation
                     if (position.equals(defensiveEntry.getValue().getTeamPositions()))
                     {
                         double thisPairingDanger=offensiveEntry.getValue().getPlayer().riskAgainst(defensiveEntry.getValue().getPlayer());
-                        thisPairingDanger=offensiveEntry.getValue().getLocation().distance(defensiveEntry.getValue().getLocation());
+                        thisPairingDanger=thisPairingDanger/offensiveEntry.getValue().getLocation().distance(defensiveEntry.getValue().getLocation());
                         thisDangerValue+=thisPairingDanger;
                     }
                 }
