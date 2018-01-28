@@ -33,7 +33,9 @@ public class TestGUI extends javax.swing.JFrame {
     Defense defenseTeam;
     
     public TestGUI() {
+        this.setResizable(false);
         initComponents();
+        DateField.setText("");
         AgeField.setText("");
         HeightField.setText("");
         WeightField.setText("");
