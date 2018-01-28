@@ -43,6 +43,8 @@ public class VisualizationWindow extends javax.swing.JPanel {
         g.setColor(Color.black);
         g.drawLine(0, 150, 460, 150);
         g.drawLine(230, 0, 230, 300);
+        g.setColor(new Color(93, 21, 0));
+        g.fillOval(230 - 4, 150 - 8, 8, 16);
         g.setColor(Color.blue);
         for (PointWithColor point : points)
         {
