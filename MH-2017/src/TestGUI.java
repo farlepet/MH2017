@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 
+import java.awt.Color;
 import java.awt.geom.Point2D;
 
 import java.util.Deque;
@@ -386,14 +387,14 @@ public class TestGUI extends javax.swing.JFrame {
             team1.addPlayer(thisPlayer);
             offenseTeam.addPlayer(thisPlayer, TeamPositions.values()[jComboBox3.getSelectedIndex()] , 
                     (new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))));
-            visualizationWindow1.addOffensePoint((new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))));
+            visualizationWindow1.addPoint((new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))),Color.blue);
         }
         else
         {
             team2.addPlayer(thisPlayer);
             defenseTeam.addPlayer(thisPlayer, TeamPositions.values()[jComboBox3.getSelectedIndex()] , 
                     (new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))));
-             visualizationWindow1.addDefensePoint((new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))));
+             visualizationWindow1.addPoint((new Point2D.Double(Double.parseDouble(XPosField.getText()),Double.parseDouble(YPosField.getText()))),Color.red);
         }
         AgeField.setText("");
         HeightField.setText("");
@@ -419,7 +420,8 @@ public class TestGUI extends javax.swing.JFrame {
         RiskFactor[] riskArray2;
         
         riskArray2 = defenseTeam.getRiskLevels(offenseTeam);
-
+        addRiskArray(riskArray);
+        addRiskArray(riskArray2);
         for (int ii = 0; ii<riskArray2.length;ii++)
         {
           	System.out.println("Name: " + riskArray2[ii].getPlayerEntry().getPlayer().getName() + " Risk Factor: " + riskArray[ii].getRiskScore());
@@ -427,6 +429,19 @@ public class TestGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    public void addRiskArray(RiskFactor[] array)
+    {
+        for (RiskFactor factor : array)
+        {
+            Color thisColor = Color.green;
+            if (factor.getRiskScore()>20){thisColor=Color.YELLOW;}
+            if (factor.getRiskScore()>40){thisColor=Color.RED;}
+            visualizationWindow1.addPoint(factor.getPlayerEntry().getLocation(),thisColor);
+        }
+        visualizationWindow1.repaint();
+    }
+    
+        
     private void WeightFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WeightFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_WeightFieldActionPerformed
