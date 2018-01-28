@@ -64,7 +64,15 @@ public class Driver
 		mitchell.setHeight(50);
 
 		riley.setHeight(63);
-                
+
+		mitchell.setNumber(1);
+
+		pete.setNumber(2);
+
+		riley.setNumber(3);
+
+		tim.setNumber(4);
+
                 myTeam.addPlayer(mitchell);
                 myTeam.addPlayer(riley);
                 myTeam.addPlayer(tim);
@@ -77,7 +85,7 @@ public class Driver
                 
                 System.out.println(offense.getPlayer(tim.getNumber()));
 
-		System.out.println(mitchell.riskAgainst(riley));
+		System.out.println(pete.riskAgainst(riley));
 		//System.out.println(riley.riskFactorAgainst());
 
 		//System.out.println(tim.riskFactorAgainst());
