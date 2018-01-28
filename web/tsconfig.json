@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "outDir": "js/",
+        "outFile": "js/main.js"
+    },
+
+	"filesGlob": [
+        "**/*.ts",
+        "node_modules/@types/jqueryui/index.d.ts",
+        "node_modules/@types/jquery/index.d.ts"
+    ],
+
+    /*"files": [
+        "node_modules/@types/jqueryui/index.d.ts",
+        "node_modules/@types/jquery/index.d.ts"
+    ],*/
+
+    "include": [
+        "ts/**/*.ts"
+    ]/*,
+
+    "exclude": [
+        "node_modules"
+    ]*/
+}
