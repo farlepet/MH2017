@@ -45,9 +45,9 @@ public class TestGUI extends javax.swing.JFrame {
             @Override
             public void mousePressed(MouseEvent e) {
                 System.out.println(e.getX());
-                XPosField.setText(""+(e.getX()-230)/10);
+                XPosField.setText(""+(e.getX()-230)/10.0);
                 System.out.println(e.getY());
-                YPosField.setText(""+(e.getY()-150)/10);
+                YPosField.setText(""+(e.getY()-150)/10.0);
             }
 
             @Override
