@@ -49,7 +49,9 @@ public class Offense extends Formation
                     //Checks if the offensive entry contains the current defensive entry in its teampositions list
                     if (position.equals(defensiveEntry.getValue().getTeamPositions()))
                     {
-                        thisDangerValue+=offensiveEntry.getValue().getPlayer().riskAgainst(defensiveEntry.getValue().getPlayer());
+                        double thisPairingDanger=offensiveEntry.getValue().getPlayer().riskAgainst(defensiveEntry.getValue().getPlayer());
+                        thisPairingDanger=offensiveEntry.getValue().getLocation().distance(defensiveEntry.getValue().getLocation());
+                        thisDangerValue+=thisPairingDanger;
                     }
                 }
             }
