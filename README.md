@@ -1,4 +1,5 @@
 # MH2017
 If you don't know, you dont know
 
-100% guarantee we will win.
+Your safety is our #1 priority.
+  -- Safety Playbook
