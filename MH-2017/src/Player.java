@@ -22,13 +22,13 @@ public class Player
 	 	injuryHistory.add (injury);
 	 }
 
-	 public String setName() {return this.name;}
+	 public void setName(String name) {this.name = name;}
 
-	 public int setNumber(){return this.number;}
+	 public void setNumber(int number){this.number = number;}
 
-	 public int setAge() {return this.age;}
+	 public void setAge(int age) {this.age = number;}
 
-	 public int setHeight() {return this.height;}
+	 public void setHeight(int height) {this.height= height;}
 
 	 public String getName() {return this.name;}
 
