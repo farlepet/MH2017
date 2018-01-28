@@ -30,6 +30,10 @@ public class Player
 	 {
 	 	double riskFactor = 0;
 
+	 	double weightDifference;
+
+	 	double heightDifference;
+
 	 	for (int i =0; i <injuryHistory.size();i++)
 	 	{
 	 		currentInjury = injuryHistory.get(i);
@@ -37,6 +41,21 @@ public class Player
 	 		riskFactor += injuryFormula(currentInjury);
 	 	}
 
+	 	// weight difference 
+
+	 	weightDifference = opponent.getWeight() - this.weight;
+
+	 	if ( weightDifference > 0 )
+	 	{
+	 		riskFactor+=weightDifference*.3;
+	 	}
+
+	 	heightDifference = opponent.getHeight() - this.weight;
+
+	 	if ( heightDifference > 0 )
+	 	{
+	 		riskFactor+=heightDifference*.4;
+	 	}
 
 
 	 	if( riskFactor > 100)
@@ -44,12 +63,8 @@ public class Player
 	 		riskFactor = 100;
 	 	}
 
-
-
 	 	return riskFactor;
 	 }
-
-	 private double weightFormula (  )
 
 	 private double injuryFormula(Injury injury)
 	 {

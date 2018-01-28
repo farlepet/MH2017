@@ -13,7 +13,7 @@ import java.util.Vector;
 
 public abstract class Formation
 {
-    private HashMap<Integer,PlayerEntry> roster;
+    private HashMap<Integer,PlayerEntry> roster; //change variable name
     private Team team;
     
     public Formation(Team team)
