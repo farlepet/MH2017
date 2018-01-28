@@ -1,11 +1,13 @@
 /// <reference path="pages/EditPlayerPage.ts"/>
 /// <reference path="pages/EditTeamPage.ts"/>
+/// <reference path="pages/FormationPage.ts"/>
 
 var currentPage : Page;
 
 var pageList : Page[] = [
     new EditTeamPage(),
-    new EditPlayerPage()
+    new EditPlayerPage(),
+    new FormationPage()
 ];
 
 $(document).ready(function docReady() {

@@ -9,6 +9,7 @@ class EditTeamPage implements Page {
     
         container : JQuery;
 
+        teamSelect   : JQuery;
         playerSelect : JQuery;
     
         /**
@@ -17,6 +18,12 @@ class EditTeamPage implements Page {
          */
         init(): boolean {
             this.container = $("#main-container");
+
+            this.teamSelect = $("<select/>");
+
+            this.container.append(this.teamSelect).append(
+                $("<button id='sel-team'/>").text("Pick Team")
+            );
 
             this.container.append(
                 $("<form/>", {
@@ -29,7 +36,7 @@ class EditTeamPage implements Page {
                 $("<h3/>").text("Players:")
             );
 
-            this.playerSelect = $("<select>", {
+            this.playerSelect = $("<select/>", {
                 size: 10
             });
 
