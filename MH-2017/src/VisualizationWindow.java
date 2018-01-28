@@ -66,7 +66,7 @@ public class VisualizationWindow extends javax.swing.JPanel {
         for (PointWithColor point : points)
         {
             g.setColor(point.color);
-            g.fillOval((int)point.point.x*10+230-5, (int)point.point.y*10+150-5, 10, 10);
+            g.fillOval((int)(point.point.x*10.0+230.0-5.0), (int)(point.point.y*10.0+150.0-5.0), 10, 10);
         }
 
 
