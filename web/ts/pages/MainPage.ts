@@ -3,9 +3,9 @@
 /**
  * Defines the player editor page
  *
- * @class EditTeamPage
+ * @class MainPage
  */
-class EditTeamPage implements Page {
+class MainPage implements Page {
     
         container : JQuery;
 

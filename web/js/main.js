@@ -91,6 +91,51 @@ var FormationPage = (function () {
     };
     return FormationPage;
 }());
+var ajaxGet;
+(function (ajaxGet) {
+    function teams(callback) {
+        $.ajax({
+            method: "GET",
+            url: "35.196.202.58:4040",
+            data: { r: "getTeams" },
+            dataType: "json",
+            success: function (data) {
+                if ("error" in data) {
+                    console.log(data);
+                    alert("Error fetching teams: " + data.error);
+                }
+                else {
+                    console.info("Teams fetched: " + data.teams);
+                    callback(data.teams);
+                }
+            },
+            cache: false
+        });
+    }
+    ajaxGet.teams = teams;
+})(ajaxGet || (ajaxGet = {}));
+var ajaxPut;
+(function (ajaxPut) {
+    function team(name) {
+        $.ajax({
+            method: "GET",
+            url: "35.196.202.58:4040",
+            data: { r: "addTeam", n: name },
+            dataType: "json",
+            success: function (data) {
+                if ("error" in data) {
+                    console.log(data);
+                    alert("Error adding team: " + data.error);
+                }
+                else {
+                    console.info("Team added: " + data);
+                }
+            },
+            cache: false
+        });
+    }
+    ajaxPut.team = team;
+})(ajaxPut || (ajaxPut = {}));
 var currentPage;
 var pageList = [
     new EditTeamPage(),
@@ -113,4 +158,20 @@ $(document).ready(function docReady() {
         document.title = "Safety Playbook - " + currentPage.getName() + " | MinneHack 2018";
     });
 });
+var MainPage = (function () {
+    function MainPage() {
+    }
+    MainPage.prototype.init = function () {
+        this.container = $("#main-container");
+        return true;
+    };
+    MainPage.prototype.getName = function () {
+        return "Main Page";
+    };
+    MainPage.prototype.destroy = function () {
+        this.container.empty();
+        return true;
+    };
+    return MainPage;
+}());
 //# sourceMappingURL=main.js.map
