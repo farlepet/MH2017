@@ -34,57 +34,24 @@ public abstract class Formation
     //Takes a number and returns the player associated with it
     public Player getPlayer(int number)
     {
-        return roster.get(number).player;
+        return roster.get(number).getPlayer();
     }
     
     //Takes a number and returns the position associated with it
     public TeamPositions getTeamPosition(int number)
     {
-        return roster.get(number).teamPosition;
+        return roster.get(number).getTeamPositions();
     }
     
     //Takes a number and returns the location associated with it
     public Point2D.Double getLocation(int number)
     {
-        return roster.get(number).location;
+        return roster.get(number).getLocation();
     }
 
     //Takes a number and removes the associated PlayerEntry from the hashmap.
     public PlayerEntry removePlayer(int number)
     {
         return roster.remove(number);
-    }
-    /*
-    This subclass contains references to a player and an integer.
-    
-    Instance Data:
-        player: The player who is being referenced
-        teamPosition: The name of the position that they play on the field
-        number: The number on the player's outfit
-        location: The (x,y) coordinates of a player on the field, relative to
-        the ball.
-            NOTE: ASSUME THE OFFEENSE IS ALWAYS POSITIVE ON THE Y AXIS
-    */
-    private class PlayerEntry
-    {
-        private Player player;
-        private int number;
-        private TeamPositions teamPosition;
-        private Point2D.Double location;
-        
-        public PlayerEntry(Player player, TeamPositions teamPosition, Point2D.Double location)
-        {
-            if (location.x<-25.56 || location.x>26.65)
-            {
-                throw new IllegalArgumentException(
-                "Player "+player.getName()+" has an invalid X position.");
-            }
-            
-            this.player=player;
-            this.teamPosition=teamPosition;
-            this.location=location;
-            this.number=player.getNumber();
-            
-        }
     }
 }
