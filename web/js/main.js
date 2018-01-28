@@ -70,12 +70,12 @@ var EditTeamPage = (function () {
     EditTeamPage.prototype.init = function () {
         var _this = this;
         this.container = $("#main-container");
-        this.teamSelect = $("<select/>");
+        this.teamSelect = $("<select/>").on("change", function () { return _this.onTeamSelect(); });
         this.container.append(this.teamSelect).append($("<button id='sel-team'/>").text("Pick Team"));
         this.container.append($("<form/>", {
             action: ".",
             method: "get"
-        }).append($("<label for='name'/>").text("Team Name: ")).append("<input type='text' name='name'/>")).append($("<br/>")).append($("<h3/>").text("Players:"));
+        }).append($("<label for='name'/>").text("Team Name: ")).append("<input type='text' name='name' id='team-name'/>")).append($("<br/>")).append($("<h3/>").text("Players:"));
         this.playerSelect = $("<select/>", {
             size: 10
         });
@@ -92,14 +92,19 @@ var EditTeamPage = (function () {
         return true;
     };
     EditTeamPage.prototype.displayTeams = function (teams) {
+        this.teams = teams;
         this.teamSelect.empty();
         console.log(teams);
         for (var i in teams) {
             this.teamSelect.append($("<option/>", {
-                value: teams[i].id
+                value: i
             }).text(teams[i].name));
             console.log(teams[i]);
         }
+    };
+    EditTeamPage.prototype.onTeamSelect = function () {
+        var idx = +this.teamSelect.val();
+        $("#team-name").val(this.teams[idx].name);
     };
     return EditTeamPage;
 }());
@@ -128,6 +133,29 @@ var ajaxGet;
         });
     }
     ajaxGet.teams = teams;
+    function teamPlayers(callback) {
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:4040",
+            data: { r: "getPlayers" },
+            dataType: "json",
+            success: function (data) {
+                if ("error" in data) {
+                    console.log(data);
+                    alert("Error fetching teams: " + data.error);
+                }
+                else {
+                    console.info("Teams fetched: " + data.teams);
+                    callback(data.teams);
+                }
+            },
+            error: function (data, textStatus, errorThrown) {
+                console.info(data.statusText + data.status + " -> " + textStatus + ": " + errorThrown + " < " + data.responseText);
+            },
+            cache: false
+        });
+    }
+    ajaxGet.teamPlayers = teamPlayers;
 })(ajaxGet || (ajaxGet = {}));
 var ajaxPut;
 (function (ajaxPut) {

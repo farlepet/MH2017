@@ -11,6 +11,8 @@ class EditTeamPage implements Page {
 
         teamSelect   : JQuery;
         playerSelect : JQuery;
+
+        teams : TeamJSON[];
     
         /**
          * Initializes the page. This function may phisically manipulate
@@ -19,7 +21,7 @@ class EditTeamPage implements Page {
         init(): boolean {
             this.container = $("#main-container");
 
-            this.teamSelect = $("<select/>");
+            this.teamSelect = $("<select/>").on("change", () => this.onTeamSelect());
 
             this.container.append(this.teamSelect).append(
                 $("<button id='sel-team'/>").text("Pick Team")
@@ -31,7 +33,7 @@ class EditTeamPage implements Page {
                     method: "get"
                 }).append(
                     $("<label for='name'/>").text("Team Name: ")
-                ).append("<input type='text' name='name'/>")
+                ).append("<input type='text' name='name' id='team-name'/>")
             ).append($("<br/>")).append(
                 $("<h3/>").text("Players:")
             );
@@ -68,6 +70,8 @@ class EditTeamPage implements Page {
         }
 
         displayTeams(teams : TeamJSON[]) {
+            this.teams = teams;
+            
             this.teamSelect.empty();
 
             console.log(teams);
@@ -75,12 +79,18 @@ class EditTeamPage implements Page {
             for(let i in teams) {
                 this.teamSelect.append(
                     $("<option/>", {
-                        value: teams[i].id
+                        value: i
                     }).text(teams[i].name)
                 );
 
                 console.log(teams[i]);
             }
+        }
+
+        onTeamSelect() {
+            var idx = +this.teamSelect.val();
+
+            $("#team-name").val(this.teams[idx].name);
         }
     }
     
