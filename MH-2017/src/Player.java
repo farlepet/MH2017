@@ -1,5 +1,7 @@
+import java.util.*;
 public class Player
 {
+
 	 public String name;
 
 	 public int number;
@@ -8,23 +10,32 @@ public class Player
 
 	 public int height;
 
-	 public Player (){}
+	 public ArrayList<Injury> injuryHistory;
 
-	 public String setName() {return this.name;}
+	 public Player ()
+	 {
+	 	injuryHistory = new ArrayList<Injury>();
+	 }
 
-	 public int setNumber(){return this.number;}
+	 public void addInjury(Injury injury)
+	 {
+	 	injuryHistory.add (injury);
+	 }
 
-	 public int setAge() {return this.age;}
+	 public void setName(String name) {this.name = name;}
 
-	 public int setHeight(){return this.height;}
+	 public void setNumber(int number){this.number = number;}
+
+	 public void setAge(int age) {this.age = number;}
+
+	 public void setHeight(int height) {this.height= height;}
 
 	 public String getName() {return this.name;}
 
-	 public int getNumber(){return this.number;}
+	 public int getNumber() {return this.number;}
 
 	 public int getAge() {return this.age;}
 
-	 public int getHeight(){return this.height;}
-
+	 public int getHeight() {return this.height;}
 
 }
