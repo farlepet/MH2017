@@ -46,11 +46,9 @@ public class Defense extends Formation
             {
                 for (TeamPositions position : offensiveEntry.getValue().getTeamPositions().getRiskPositions())
                 {
-                    System.out.println("ree");
                     //Checks if the offensive entry contains the current defensive entry in its teampositions list
                     if (position.equals(defensiveEntry.getValue().getTeamPositions()))
                     {
-                        System.out.println("wee");
                         double thisPairingDanger=defensiveEntry.getValue().getPlayer().riskAgainst(offensiveEntry.getValue().getPlayer());
                         thisPairingDanger=thisPairingDanger/defensiveEntry.getValue().getLocation().distance(offensiveEntry.getValue().getLocation());
                         thisDangerValue+=thisPairingDanger;
