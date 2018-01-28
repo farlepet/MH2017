@@ -73,6 +73,35 @@ class SafetyPlaybookServer {
                 }
 
                 response += "]";
+            } else if(r.equals("addTeam")) {
+                if(!q.containsKey("n")) {
+                    return je("No team name specified!");
+                }
+
+                int teamID = SafetyPlaybookDB.getInstance().addTeam(new Team(q.get("n")));
+
+                response += jst("id", ""+teamID);
+            } else if(r.equals("addPlayer")) {
+                if(!q.containsKey("n")) {
+                    return je("No player number specified!");
+                } if(!q.containsKey("na")) {
+                    return je("No player name specified!");
+                } if(!q.containsKey("t")) {
+                    return je("No team number specified!");
+                }
+
+                int playerN       = Integer.parseInt(q.get("n"));
+                String playerName = q.get("na");
+                int teamID        = Integer.parseInt(q.get("t"));
+                
+                Player player = new Player();
+                player.setNumber(playerN);
+                player.setName(playerName);
+                if(q.containsKey("age"))    player.setAge(   Integer.parseInt(q.get("age")));
+                if(q.containsKey("height")) player.setHeight(Integer.parseInt(q.get("height")));
+                if(q.containsKey("weight")) player.setWeight(Integer.parseInt(q.get("weight")));
+
+                SafetyPlaybookDB.getInstance().addPlayer(teamID, player);
             }
             
             else {

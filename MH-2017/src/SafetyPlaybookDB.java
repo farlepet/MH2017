@@ -5,9 +5,12 @@ import java.util.*;
 class SafetyPlaybookDB {
     private static SafetyPlaybookDB instance = null;
     
+    int nextTeamID;
+
     private Map<Integer, Team> teams;
 
     public SafetyPlaybookDB() {
+        this.nextTeamID = 0;
         teams = new HashMap<Integer, Team>();
     }
 
@@ -46,5 +49,11 @@ class SafetyPlaybookDB {
 
         this.teams.get(teamID).addPlayer(player);
         return true;
+    }
+
+    public int addTeam(Team team) {
+        this.teams.put(this.nextTeamID, team);
+        this.nextTeamID++;
+        return this.nextTeamID - 1;
     }
 }
