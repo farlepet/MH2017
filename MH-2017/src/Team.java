@@ -31,4 +31,9 @@ public class Team
     {
         return this.teamName;
     }
+
+    public boolean containsPlayer(Player checkPlayer)
+    {
+        return roster.contains(checkPlayer);
+    }
 }
