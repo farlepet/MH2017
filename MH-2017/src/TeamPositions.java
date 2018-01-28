@@ -25,6 +25,15 @@ public enum TeamPositions
         this.riskPositions=riskPositions;
     }
     
+    public boolean getOffense()
+    {
+        return offense;
+    }
+    
+    public TeamPositions[] getRiskPositions()
+    {
+        return riskPositions;
+    }
     
 }
 
