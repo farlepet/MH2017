@@ -63,7 +63,5 @@ public abstract class Formation
     {
         return roster;
     }
-    
-    //Returns an array with all player entries associated with a risk value.
-    abstract public RiskFactor[] getRiskLevels(Formation opposingTeam);    
+       
 }

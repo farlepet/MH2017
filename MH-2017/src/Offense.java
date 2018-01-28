@@ -31,7 +31,7 @@ public class Offense extends Formation
         super.addPlayer(player, teamPosition, location);
     }
     
-    public RiskFactor[] getRiskLevels(Formation opposingTeam)
+    public RiskFactor[] getRiskLevels(Defense opposingTeam)
     {
         Set<Entry<Integer,PlayerEntry>> offenseSet = this.getHashMap().entrySet();
         Set<Entry<Integer,PlayerEntry>> defenseSet = opposingTeam.getHashMap().entrySet();
