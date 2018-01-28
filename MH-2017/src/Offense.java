@@ -1,6 +1,7 @@
 
 import java.awt.geom.Point2D;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -34,6 +35,27 @@ public class Offense extends Formation
     {
         Set<Entry<Integer,PlayerEntry>> offenseSet = this.getHashMap().entrySet();
         Set<Entry<Integer,PlayerEntry>> defenseSet = opposingTeam.getHashMap().entrySet();
-        return super.getRiskFactor(offenseSet,defenseSet);
+        RiskFactor[] output = new RiskFactor[offenseSet.size()];
+        int i=0;
+        //Increments through every entry in the offensive set
+        for (Map.Entry<Integer,PlayerEntry> offensiveEntry : offenseSet)
+        {
+            double thisDangerValue=offensiveEntry.getValue().getPlayer().riskAgainst();
+            //Increments through every entry in the defensive set
+            for (Map.Entry<Integer,PlayerEntry> defensiveEntry : defenseSet)
+            {
+                for (TeamPositions position :offensiveEntry.getValue().getTeamPositions().getRiskPositions())
+                {
+                    //Checks if the offensive entry contains the current defensive entry in its teampositions list
+                    if (position.equals(defensiveEntry.getValue().getTeamPositions()))
+                    {
+                        thisDangerValue+=offensiveEntry.getValue().getPlayer().riskAgainst(defensiveEntry.getValue().getPlayer());
+                    }
+                }
+            }
+            output[i]=new RiskFactor(thisDangerValue,offensiveEntry.getValue());
+            i++;
+        }
+        return output;
     }
 }

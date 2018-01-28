@@ -3,14 +3,14 @@
  */
 public class RiskFactor
 {
-    private int riskScore;
+    private double riskScore;
     private PlayerEntry playerEntry;
-    public RiskFactor(int riskScore, PlayerEntry playerEntry)
+    public RiskFactor(double riskScore, PlayerEntry playerEntry)
     {
         this.riskScore = riskScore;
         this.playerEntry = playerEntry;
     }
     
     public PlayerEntry getPlayerEntry() {return playerEntry;}
-    public int getRiskScore() {return riskScore;}
+    public double getRiskScore() {return riskScore;}
 }

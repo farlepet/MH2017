@@ -65,31 +65,5 @@ public abstract class Formation
     }
     
     //Returns an array with all player entries associated with a risk value.
-    abstract public RiskFactor[] getRiskLevels(Formation opposingTeam);
-    
-    public     RiskFactor[] getRiskFactor(Set<Entry<Integer, PlayerEntry>> offenseSet, Set<Entry<Integer, PlayerEntry>> defenseSet)
-    {
-        RiskFactor[] output = new RiskFactor[offenseSet.size()];
-        
-        int i=0;
-        for (Map.Entry<Integer,PlayerEntry> ourEntry : offenseSet)
-        {
-            int thisDangerValue = 0;
-            for (Map.Entry<Integer,PlayerEntry> theirEntry : defenseSet)
-            {
-                for (TeamPositions position :ourEntry.getValue().getTeamPositions().getRiskPositions())
-                {
-                    if (position.equals(theirEntry.getValue().getTeamPositions()))
-                    {
-                        thisDangerValue+=ourEntry.getValue().getPlayer().riskAgainst(theirEntry.getValue().getPlayer());
-                    }
-                }
-            }
-            output[i]=new RiskFactor(thisDangerValue,ourEntry.getValue());
-            i++;
-        }
-        return output;
-    }
-
-    
+    abstract public RiskFactor[] getRiskLevels(Formation opposingTeam);    
 }
