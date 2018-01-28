@@ -1,5 +1,7 @@
+import java.util.*;
+
 class SafetyPlaybookDB {
-    
+    private static SafetyPlaybookDB instance = null;
     
     public SafetyPlaybookDB() {
 
@@ -13,7 +15,21 @@ class SafetyPlaybookDB {
         return null;
     }
 
-    public Map<int, String> getTeams() {
-        return null;
+    public Map<Integer, String> getTeams() {
+        Map<Integer, String> map = new HashMap<Integer, String>();
+
+        return map;
+
+
+
+        //return null;
+    }
+
+    public static SafetyPlaybookDB getInstance() {
+        if(SafetyPlaybookDB.instance == null) {
+            SafetyPlaybookDB.instance = new SafetyPlaybookDB();
+        }
+
+        return SafetyPlaybookDB.instance;
     }
 }
